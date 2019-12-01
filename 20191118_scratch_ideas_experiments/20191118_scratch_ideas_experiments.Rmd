@@ -1,0 +1,40 @@
+---
+title: "Scratch-Ideen zum ZWS-Basics Artikel"
+date:  "2019-11-18"
+output: html_notebook
+---
+
+
+## Erklärung
+Ideen und Entwürfe für den ZWS-Basics Artikel entstehen in diesem Dokument. Aufgrund der ersten Sitzung stelle ich einen Entwurf mit ersten Ideen zusammen. Inhaltliche Punkte sollen sein:
+
+* Wozu brauchen wir Zuchtwerte und eine Zuchtwertschätzung
+* Was bedeuten Zuchtwerte an einem Beispielvergleiche zwischen 2 Stieren
+
+
+## Entwurf 1: Zuchtziel
+In der Tierzucht befassen wir uns mit der Verbesserung von Rassen. Was als Verbesserung betrachtet wird, ist grundsätzlich relativ und variiert je nach Standpunkt des Betrachtenden. Innerhalb eines Zuchtprogramms gibt das Zuchtziel einer Rasse die gemeinsame Stossrichtung vor, entlang dessen sich die Rasse entwickeln soll. 
+
+
+## Entwurf 2: Grundsätzliche Fragen
+In der Tierzucht stellen wir uns die zentrale Frage, welche Tiere eignen sich am besten als Eltern der nächsten Generation? Die Bestimmung der besten Elterntiere kann nur im Bezug auf ein vorher definiertes Zuchtziel beantwortet werden. Der Gesamtzuchtwert entspricht der Umsetzung des Zuchtziels, welche für die praktische Züchtungsarbeit wichtig ist. Diese Wichtigkeit begründet sich in der im Gesamtzuchtwert enthaltenen Bewertung der im Zuchtziel berücksichtigten Einzelmerkmale. 
+
+
+## Entwurf 3: Tätigkeit in der Tierzucht
+In der Tierzucht beschäftigen wir uns mit der Verbesserung einer Rasse im Bezug auf ein vorher definiertes Zuchtziel. Dazu stehen uns die Werkzeuge **Selektion** und **gezielte Paarung** zur Verfügung. Unter Selektion verstehen wir die Auswahl der besten Tiere als Eltern der nächsten Generation. Wie wird diese Auswahl getroffen? 
+
+Als Vergleich wird bei der Auswahl von jungen Sporttalenten für ein Nationalkader eine Rangierung der Kandidierenden aufgrund ihrer erbrachten Leistung erstellt. Die besten Sportler gemäss der erstellten Rangliste werden dann für die nationale Auswahl nominiert. Ähnlich muss auch für die Beurteilung der Eignung von Tieren als mögliche Eltern ein Kriterium gefunden werden, anhand dessen potentielle Elterntiere bewertet und rangiert werden können. Dabei gilt es zu beachten, dass die Bewertung von potentiellen Elterntieren aus zwei Gründen nicht aufgrund der gemessenen phänotypischen Leistung des Tieres direkt erfolgen kann
+
+1. Viele der wirtschaftlich relevanten Merkmale können nur bei einem Geschlecht gemessen werden.
+2. Eltern vererben nicht Phänotypen an ihre Nachkommen, sondern eine zufällige Stichprobe ihrer Gene. 
+
+Die Eignung eines bestimmten Tieres als Elterntier der nächsten Generation kann also nur aufgrund des Wertes der an die Nachkommen vererbten Gene beurteilt werden. Dieser Wert wird als **Zuchtwert** bezeichnet. Der Zuchtwert kann aber weder gemessen noch beobachtet werden, sondern er muss aufgrund von verschiedenen Informationsquellen mithilfe von statistischen Verfahren geschätzt werden. Die geschätzten Zuchtwerte können dann als Bewertungskriterium der Eignung von potentiellen Elterntieren verwendet werden. Werden die potentiellen Elterntiere gemäss der geschätzten Zuchtwerte rangiert und verwendet man die gemäss der erstellten Rangliste besten Tiere als Eltern, so weisen die Nachkommen verbesserte Eigenschaften im Vergleich zur Elterngeneration auf. Werden die Nachkommen von Eltern mit sehr hohen geschätzten Zuchtwerten mit den Nachkommen von Eltern mit tiefen geschätzten Zuchtwerten verglichen, dann zeichnet sich die erste Nachkommengruppe durch ein höheres Leistungsniveau im Vergleich zu den Nachkommen von Eltern mit tiefen geschätzten Zuchtwerten aus.
+
+Praktisch kann dies durch einen Vergleich der Nachkommen der beiden Stiere Jongleur (`CH 120.0270.9369.3`) und Huray (`DE 935 830 301.7`) veranschaulicht werden^[Hier sollte der Vergleich auf aktuellen Stieren basieren.]. Bei Hurray beträgt der geschätzte Gesamtzuchtwert $1360$, während bei Jongleur der geschätzte Gesamtzuchtwert bei $1059$ liegt. Die Töchter von Jongleur weisen in der ersten Laktation eine durchschnittliche Milchmenge (Standardabschluss) von $6331$ kg Milch auf. Bei den Hurray-Töchtern liegt dieser Wert bei $6875$ kg, also $544$ kg höher im Vergleich zu den Jongleur-Töchtern. Von den Töchtern von Jongleur scheiden $8.4%$ vor dem 80. Laktationstag aus. Bei Hurray liegt diese Versagerquote bei nur $3.6%$. Die Überlebensrate der Töchter zur zweiten Laktation liegt bei Hurray bei $85%$ und bei Jongleur bei $75%$. 
+
+Somit zeigt sich, dass die Auswahl von Eltern mit hohem geschätzten Gesamtzuchtwerte sich positiv auf das Leistungsniveau und die Leistungssicherheit der Nachkommen auswirkt.
+
+
+
+
+

@@ -21,3 +21,35 @@ knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
 options(htmltools.dir.version = FALSE)
 ```
 
+
+## Hintergrund und Kontext
+Als Kontext für den Artikel^[Analoge Ideen können auch für die Einführung in den ZWS-Kurs verwendet werden.] nehmen wir eine Zuchtorganisation an, welche eine Population von Nutztieren in eine bestimmte Richtung nachhaltig verändern möchte. Die Verwendung des Begriffs der Nachhaltigkeit deutet darauf hin, dass die Veränderung nicht aufgrund von temporär gut gewählten äusseren Faktoren zustande kommen soll, sondern dass sich diese Veränderung im Erbgut der Keimbahn der Population verankern soll. Somit manifestiert sich die Ausprägung der veränderten Eigenschaften unabhängig von den verschiedenen Umwelten in welchen die Nutztiere gehalten werden.
+
+
+## Organisatorische Umsetzung
+Aus Sicht der Zuchtorganisation lässt sich eine solche nachhaltige Veränderung durch die Definition eines Zuchtziels umsetzen. Nun gibt es verschiedene Arten der Definition eines Zuchtziels.
+
+1. Umschreibung von phänotypischen Eigenschaften des Idealtieres
+2. Definition einer Menge von Merkmalen und Festlegung in welche Richtung sich diese Merkmale verändern sollen.
+
+
+### Zuchtziel Aufgrund Idealisiertem Phänotyp
+Die erste Art der Definition eines Zuchtziels ist für eine züchterische Umsetzung nicht hilfreich. Phänotypische Eigenschaften sind stark von der Umwelt abhängig^[Die gleiche Leistung in verschiedenen Umwelten erbracht, ist deshalb nicht vergleichbar.]. 
+
+Des weiteren wird ein sehr starker Focus auf das Einzeltier gelegt. In der Nutztierzucht geht es aber viel stärker darum eine Population in bestimmten Merkmalen zu verbessern. Als Konsequenz aus der Verbesserung der Population werden sich dann auch die Einzeltiere, welche Teil dieser Population sind, verbessern. Es wir nicht gesagt, was mit den Tieren gemacht wird, welche die Leistungseigenschaften schon überschreiten. 
+
+Die in der ersten Zuchtzielsdefinition aufgelisteten Merkmale werden als unabhängige Merkmale dargestellt. Das entspricht aber nur in seltenen Fällen der Wahrheit. In der Praxis sind die meisten Merkmale von einander abhängig und diese Abhängigkeiten müssen berücksichtigt werden. 
+
+
+### Zuchtziel als Richtung der Veränderung
+Bei der zweiten Art der Definition bestimmt die Zuchtorganisation eine Menge von Merkmalen, in welchen sie die Tiere ihrer Rasse verbessern will. Sobald diese Merkmale bestimmt sind, wird die wirtschaftliche Bedeutung der Merkmale untereinander bestimmt. Die wirtschaftliche Bedeutung wird in Form von wirtschaftlichen Gewichten ausgedrückt. Diese wirtschaftlichen Gewichte entsprechen der Veränderung des Gewinns bei einer kleinen Veränderung des Populationsmittels des Merkmals. 
+
+In einem zweiten Schritt wird überprüft, ob die im für das Zuchtziel ausgewählten Merkmale einfach und günstig bei vielen Tieren in der Population messbar oder beobachtbar sind. Falls das bei gewissen Merkmalen nicht der Fall ist, dann werden für diese Merkmale geeignete Hilfsmerkmale gesucht. Anstelle der schwer messbaren Merkmalen im Zuchtziel werden dann die Hilfsmerkmale erfasst. 
+
+Sobald wir einfach messbare Merkmale festgelegt haben, dann braucht es genügen Daten für eine erste genetische Analyse. Diese besteht aus einer deskriptiven Statistik der Merkmale und möglicher Einflussfaktoren auf die Merkmale. Eine genauere Bestimmung der Einflussfaktoren auf die Merkmale wird dann in der Modellselektion gemacht. Dort werden die Umwelteinflüsse bestimmt, welche einen Einfluss auf die Merkmale haben. Mit der Varianzanalyse wird dann bestimmt, ob die beobachtete Variation in einem Merkmal auch einen genetischen Anteil aufweist oder nicht. Nur falls die Variation einen genetischen Hintergrund hat, kann ein bestimmtes Merkmal züchterisch verbessert werden.
+
+
+## Zuchtwert als Rangierungskriterium
+
+
+## Top- und Bottom-Vergleiche
