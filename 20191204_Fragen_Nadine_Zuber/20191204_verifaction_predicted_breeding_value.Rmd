@@ -1,0 +1,53 @@
+---
+title: "Verification of Predicted Breeding Values"
+output:
+  html_document:
+    df_print: paged
+date: '2019-12-04'
+---
+
+## Disclaimer
+
+
+## Question by Nadine Zuber
+
+> Heute war ja die neue ZWS. Mein Chef denkt nun, dass die Zuchtwerte falsch sind (haha^^). Kannst du mir schnell sagen, wie sich die verschiedenen Zuchtwerte berechnen lassen, damit ich ihm das erklären kann?
+Z.B. hat unser Muni Larix Z beim ISET einen Abstammungszuchtwert von 1450, einen GOZW von 1407 und einen DOZW von 1419. Ich habe leider meine Unterlagen gerade nicht zur Hand, darum habe ich gedacht, ich frage schnell dich :)
+
+
+## Abstammungszuchtwert
+```{r, echo=FALSE}
+n_bull_iset_abst_documented <- 1450
+n_bull_iset <- 1544
+n_dam_iset <- 1350
+n_bull_iset_abst_calc <- (n_bull_iset + n_dam_iset) / 2
+```
+
+* Bull: LARIX Z-ET 	CH 120147286319 with ISET 	`r n_bull_iset_abst_documented`
+* Sire: Vogue LETSGO 	CA 12687225.2 with ISET 	`r n_bull_iset` 	
+* Dam: Villstar High Octane LAIMA Z with ISET 	`r n_dam_iset`
+
+Verification of predicted breeding value based on parental information:
+
+$$ISET_{Abst} = (`r n_bull_iset` + `r n_dam_iset`) / 2 = `r round(n_bull_iset_abst_calc, digits = 0)`$$
+Der Unterschied zwischen `r n_bull_iset_abst_documented` und `r n_bull_iset_abst_calc` kommt daher, dass der Abstammungszuchtwert auf der 100-er Skala gerechnet wird, dann wird auf eine ganze Zahl gerundet und anschliessend wird mit 10 multipliziert. 
+
+
+## Direkt Genomischer Zuchtwert (DGZW)
+Der direkt genomische Zuchtwert resultiert aus der genomischen Zuchtwertschätzung. Diese wird bei Qualitas mit dem Two-Step-Verfahren gemacht. Bei diesem Verfahren wird die Population der typisierten Tiere in ein Trainingsset und in ein Testset aufgeteilt. Das Trainingsset enthält alle Stiere mit Zuchtwerten ab einem bestimmten Bestimmtheitsmass. Das Testset sind alle jungen typisiserten Tiere, welche noch keine eigene Leistung und/oder noch keine traditionellen Zuchtwerte (ausser Abstammungszuchtwerte) aufweisen. 
+
+Die beiden Schritte beinhalten die folgenden Analysen:
+
+1. Dreimal im Jahr (April, August und Dezember) werden aufgrund der Tiere im Trainingsset die Markereffekte geschätzt. Dabei werden de-regressierte Zuchtwerte als Beobachtungen verwendet und die Markergenotypen werden als fixe Effekte gefittet. Das gibt dann für jeden Marker einen bestimmten genotypischen Wert. In der quantitativen Genetik wird dieser Wert mit $a$ bezeichnet.
+2. Alle zwei Wochen werden für alle typisierten Tiere mit den Markereffekten aus dem Schritt 1 die genomischen Zuchtwerte geschätzt. Das geschieht über die Aufsummierung der aufgrund der Markergenotypen bestimmten Markereffekt Werte.
+
+Für den Stier LARIX Z-ET 	CH 120147286319 führt die Aufsummierung der Markereffekte für die einzelnen Merkmale, welche im ISET enthalten sind und der anschliessenden Gewichtung der Merkmals-spezifischen DGZWs zu einem DGZW von 1419. 
+
+
+## Genomisch Optimierter Zuchtwert (GOZW)
+Der GOZW kombiniert die traditionellen Zuchtwerte mit den DGZW. Die Gewichtungsfaktoren für DGZW und traditionellen Zuchtwert werden je aufgrund des jeweiligen Bestimmtheitsmasses bestimmt
+
+$$w = \frac{B}{1-B}$$
+
+wobei $B$ dem Bestimmtheitsmass für entspricht.
+

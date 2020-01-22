@@ -23,7 +23,7 @@ options(htmltools.dir.version = FALSE)
 
 
 ## Hintergrund und Kontext
-Als Kontext für den Artikel^[Analoge Ideen können auch für die Einführung in den ZWS-Kurs verwendet werden.] nehmen wir eine Zuchtorganisation an, welche eine Population von Nutztieren in eine bestimmte Richtung nachhaltig verändern möchte. Die Verwendung des Begriffs der Nachhaltigkeit deutet darauf hin, dass die Veränderung nicht aufgrund von temporär gut gewählten äusseren Faktoren zustande kommen soll, sondern dass sich diese Veränderung im Erbgut der Keimbahn der Population verankern soll. Somit manifestiert sich die Ausprägung der veränderten Eigenschaften unabhängig von den verschiedenen Umwelten in welchen die Nutztiere gehalten werden.
+Als Kontext für den Artikel^[Analoge Ideen können auch für die Einführung in den ZWS-Kurs verwendet werden.] nehmen wir eine Zuchtorganisation an, welche eine Population von Nutztieren in eine bestimmte Richtung nachhaltig verändern möchte. Die Verwendung des Begriffs der Nachhaltigkeit deutet darauf hin, dass die Veränderungen nicht durch temporär gut gewählten äusseren Umweltfaktoren entstehen, sondern dass diese Veränderungen im Erbgut der Keimbahn der Population verankert werden. Somit manifestiert sich die Ausprägung der veränderten Eigenschaften unabhängig von den verschiedenen Umwelten in welchen die Nutztiere gehalten werden.
 
 
 ## Organisatorische Umsetzung
@@ -46,10 +46,14 @@ Bei der zweiten Art der Definition bestimmt die Zuchtorganisation eine Menge von
 
 In einem zweiten Schritt wird überprüft, ob die im für das Zuchtziel ausgewählten Merkmale einfach und günstig bei vielen Tieren in der Population messbar oder beobachtbar sind. Falls das bei gewissen Merkmalen nicht der Fall ist, dann werden für diese Merkmale geeignete Hilfsmerkmale gesucht. Anstelle der schwer messbaren Merkmalen im Zuchtziel werden dann die Hilfsmerkmale erfasst. 
 
-Sobald wir einfach messbare Merkmale festgelegt haben, dann braucht es genügen Daten für eine erste genetische Analyse. Diese besteht aus einer deskriptiven Statistik der Merkmale und möglicher Einflussfaktoren auf die Merkmale. Eine genauere Bestimmung der Einflussfaktoren auf die Merkmale wird dann in der Modellselektion gemacht. Dort werden die Umwelteinflüsse bestimmt, welche einen Einfluss auf die Merkmale haben. Mit der Varianzanalyse wird dann bestimmt, ob die beobachtete Variation in einem Merkmal auch einen genetischen Anteil aufweist oder nicht. Nur falls die Variation einen genetischen Hintergrund hat, kann ein bestimmtes Merkmal züchterisch verbessert werden.
+Sobald wir einfach messbare Merkmale festgelegt haben, dann braucht es genügen Daten für eine erste genetische Analyse. Diese besteht aus einer deskriptiven Statistik der Merkmale und möglicher Einflussfaktoren auf die Merkmale. Eine genauere Bestimmung der Einflussfaktoren auf die Merkmale wird dann in der Modellselektion gemacht. Dort werden die Umwelteinflüsse bestimmt, welche einen Einfluss auf die Merkmale haben. Mit der Varianzkomponentenschätzung wird dann bestimmt, ob die beobachtete Variation in einem Merkmal auch einen genetischen Anteil aufweist oder nicht. Nur falls die Variation einen genetischen Hintergrund hat, kann ein bestimmtes Merkmal züchterisch verbessert werden.
 
 
 ## Zuchtwert als Rangierungskriterium
+Für die Auswahl der Elterntiere einer zukünftigen Generation brauchen wir ein Bewertungs- oder ein Rangierungskriterium, damit wir eine Auswahl von geeigneten Elterntieren aus der Population treffen können. Phänotypische Leistungen eignen sich aus verschiedenen Gründen schlecht als Rangierungskriterium. 
 
+1. Viele wirtschaftlich wichtige Merkmale können nur bei einem Geschlecht gemessen werden.
+
+Der Zuchtwert eines Tieres ist definiert als die doppelte Abweichung aller Nachkommen des Tieres vom Populationsdurchschnitt.
 
 ## Top- und Bottom-Vergleiche

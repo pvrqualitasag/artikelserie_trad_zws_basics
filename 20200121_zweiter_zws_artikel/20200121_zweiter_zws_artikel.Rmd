@@ -1,0 +1,102 @@
+---
+title: "Themenvorschläge für den zweiten ZWS-Basics Artikel"
+author: "Peter von Rohr"
+date: "1/20/2020"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::knit_hooks$set(hook_convert_odg = rmdhelp::hook_convert_odg)
+```
+
+## Zweiter ZWS-Basics Artikel
+In der Artikelserie `ZWS-Basics` sollen zwei Artikel zum Thema klassische Zuchtwertschätzung erscheinen. Im folgenden sollen einige Ideen beschrieben werden.
+
+
+## Lösungen Fixer Effekte
+Gibt es interessante Informationen in den Lösungen von fixen Effekten? Als Beispiele für fixe Effekte werden in unseren Routineauswertungen die folgenden fixen Effekte berücksichtigt.
+
+* Laktation der Kuh
+* Saisonalität
+
+Ein Vorschlag von SWE, welcher nicht ganz angekommen ist: Aussage: Daten mit Korrekturen der Umwelte aus Beobachtungen. 
+
+Für Merkmale wie SCS oder MAR mit den folgenden fixen Effekten im Modell. Diese wurden aufgrund der Einträge im File `Solfix` von MiX99 herausgefunden.
+
+* HYS
+* Alterseffekt
+
+Als erstes wird versucht aufgrund der Lösungen der fixen Effekte Plots zu erstellen. 
+
+
+### Story
+Im ersten Artikel wurde aufgrund von Top- Und Bottom-Vergleichen und aufgrund eines Vergleichs von Nachkommen von extremen Stieren gezeigt, welche Bedeutung Zuchtwerte haben. Aufgrund der gezeigten Vergleiche kann auch sehr schön demonstriert werden, dass die Definition des Begriffs Zuchtwert auch in den praktischen Zuchtdaten wieder zu finden ist.
+
+Als Fokus des zweiten Artikels soll es nun darum gehen, wie diese geschätzten Zuchtwerte zustande kommen. Wie im ersten Artikel schon erwähnt, können Zuchtwerte nicht gemessen oder beobachtet werden, sondern diese müssen aufgrund von statistischen Modellen geschätzt werden. 
+
+
+### Was ist ein statistisches Modell
+Ein statistisches Modell besteht aus den folgenden Komponenten
+
+* erklärende Variablen, 
+* unbekannte Parameter, 
+* eine oder mehrere Zielgrössen (vorerst betrachten wir den Fall mit einer Zielgrösse).
+
+Das Zusammenspiel der oben aufgelisteten Modellkomponenten kann mit dem folgenden Schema veranschaulicht werden.
+
+```{r zws-modell-komponenten, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/zws-modell-komponenten.odg")
+knitr::include_graphics(path = "odg/zws-modell-komponenten.png")
+```
+
+In einer Zuchtwertschätzung oder allgemein in einer statistischen Analyse sind die Werte der erklärenden Variablen und die Werte der Zielgrösse aus dem in die Analyse verwendeten Datensatz bekannt. In einer Zuchtwertschätzung entspricht der Wert des beobachteten Merkmals (Zellzahl, Mastitisresistenz, Temperatment, etc) der Zielgrösse im Modell. Beispiele für erklärende Variablen sind das Geschlecht, das Alter oder der Standortbetrieb eines Tieres. Wie stark eine bestimmte Ausprägung (weibliches oder männliches Geschlecht, unterschiedliche Alterskategorie oder ein bestimmter Betrieb) einer erklärenden Variablen die Zielgrösse beeinflusst wird als **Effektstärke** bezeichnet und gehört in die Kategorie der unbekannten Parameter. 
+
+In einem statistischen Modell, welches für die Zuchtwertschätzung verwendet wird, gehört die **genetische Veranlagung** (Genotyp) eines Tieres zu den erklärenden Variablen. Die Effektstärke der genetischen Veranlagung entspricht dem **Zuchtwert**. Aus Sicht des statistischen Modells gehört also der Zuchtwert in die Kategorie der unbekannten Parameter. In einem späteren Abschnitt wir beschrieben, wie die unbekannten Parameter, also auch die Zuchtwerte geschätzt werden können.
+
+
+### Fixe und zufällige Effekte
+Die Modellkomponente der erklärenden Variablen lassen sich in **fixe** und in **zufällige** Effekte einteilen. Leider ist die Unterteilung der erklärenden Variablen in fixe und zufällige Effekte nicht wirklich eindeutig definiert. So bleibt es immer ein Stück weit eine Ermessensfrage, ob eine bestimmte erklärende Variable als fix oder als zufällig in einem Modell berücksichtigt wird. Eine gängige Lehrbuchmeinung ist, dass alle Effekte mit einer relative geringen Anzahl von diskreten Faktorstufen als fixe Effekt modelliert werden soll. Ein typisches Beispiel für einen fixen Effekt ist das Geschlecht, welches meist in zwei Ausprägungen in einem bestimmten Datensatz vorkommt. Alle Effekte, bei welchen es theoretisch eine unendliche Anzahl an Stufen gibt und nur eine Stichprobe dieser Stufen in einem Datensatz vorkommen, werden als zufällig im Modell berücksichtigt. Zuchtwerte sind ein Beispiel für Effekte, welche immer zufällig modelliert werden. Da bei zufälligen Effekten wird zusätzlich angenommen, dass die Effektstärken alle aus einer gemeinsamen Dichteverteilung kommen. Die folgende Darstellung soll dne Unterschied zwischen fixen und zufälligen Effekten noch etwas besser veranschaulichen.
+
+```{r pl_fix, echo=FALSE, fig.show='hide'}
+require(dplyr)
+require(ggplot2)
+tbl_fix_effect <- tibble::tibble(Geschlecht = c("Weiblich", "Männlich"),
+                                 Effektstärke       = c(53,29))
+# use bar plot for fixed effect
+p_fix <- ggplot(tbl_fix_effect, aes(x = Geschlecht, y = Effektstärke)) +
+  geom_bar(stat = "identity", colour = c("green", "blue"), fill = c("green", "blue"))
+ggsave(filename = 'fixed_effect.png', plot = p_fix, device = "png", dpi = 600)
+```
+
+```{r pl_normal, echo=FALSE, fig.show='hide'}
+# use a normal distribution for the random effect
+p_norm <- ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+   stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) + 
+   scale_x_continuous(name = "Effektstärke") + 
+   ylab("") +
+   scale_y_continuous(breaks = NULL)
+ggsave(filename = 'random_effect.png', plot = p_norm, device = "png", dpi = 600)
+```
+
+```{r fixed-vs-random, echo=FALSE, hook_convert_odg=TRUE, fig_path="odg"}
+#rmdhelp::use_odg_graphic(ps_path = "odg/fixed-vs-random.odg")
+knitr::include_graphics(path = "odg/fixed-vs-random.png")
+```
+
+
+### Modellklassierung
+Kommen in einem Modell (abgesehen vom Resteffekt, der immer zufällig ist) nur fixe Effekte vor dann bezeichnen wir dieses Modell als **fixes Modell**. Besteht ein Modell nur aus zufälligen Effekten, dann heisst das Modell **zufällig**. Sobald in einem Modell abgesehen vom Resteffekt noch weitere zufällige Effekte berücksichtigt werden, dann sprechen wir von einem **gemischten Modell**. In der Zuchtwertschätzung werden ausschliessliche gemischte Modelle verwendet. 
+
+
+### Ziel der Zuchtwertschätzung
+Wie jede statistische Auswertung hat auch die Zuchtwertschätzung das Ziel die unbekannten Parameter möglichst genau zu schätzen. Je besser die erklärenden Variablen zusammen mit den geschätzten Parametern die unterschiedlichen Werte der beobachteten Zielgrösse abbilden können, desto besser ist die Schätzgenauigkeit. 
+
+
+
+## Modellselektion
+Wie wird bestimmt welche Einflussfaktoren wichtig sind?
+
+
+## Connectedness
+Welche Voraussetzungen müssen gegeben sein, dass Zuchtwerte zuverlässig geschätzt werden können.   
