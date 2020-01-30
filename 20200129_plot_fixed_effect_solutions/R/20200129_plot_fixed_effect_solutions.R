@@ -19,7 +19,7 @@ require(ggplot2)
 #+ data-dir
 s_breed <- "rh"
 s_trait <- "mar"
-s_data_dir_pre <- "/Volumes/data_zws/health"
+s_data_dir_pre <- "/qualstorzws01/data_zws/health"
 s_data_dir_post <- "zws"
 s_data_dir <- file.path(s_data_dir_pre, s_trait, "work", s_breed, s_data_dir_post)
 # check whether data directory exists
