@@ -145,6 +145,11 @@ tbl_sol_fix$Solution <- as.double(tbl_sol_fix$Solution)
 #+ filter-trait-mar-factor-cycm
 tbl_sol_fix_mar_cycm <- tbl_sol_fix %>% 
   filter(Trait == 'mar' & Factor == 'cycm')
+tbl_sol_fix_hsa150_cycm <- tbl_sol_fix %>% 
+  filter(Trait == 'hsa150' & Factor == 'cycm')
+tbl_sol_fix_ms150_cycm <- tbl_sol_fix %>% 
+  filter(Trait == 'ms150' & Factor == 'cycm')
+
 #head(tbl_sol_fix_mar_cycm)
 
 
@@ -154,6 +159,10 @@ tbl_sol_fix_mar_cycm <- tbl_sol_fix %>%
 tbl_sol_fix_mar_cycm <- tbl_sol_fix_mar_cycm %>%
   inner_join(tbl_level_code, by = c('Level' = 'level'))
 #head(tbl_sol_fix_mar_cycm)
+tbl_sol_fix_hsa150_cycm <- tbl_sol_fix_hsa150_cycm %>%
+  inner_join(tbl_level_code, by = c('Level' = 'level'))
+tbl_sol_fix_ms150_cycm <- tbl_sol_fix_ms150_cycm %>%
+  inner_join(tbl_level_code, by = c('Level' = 'level'))
 
 
 #' ## Restrict Range of Calving Years
@@ -164,6 +173,10 @@ n_min_year <- max(tbl_sol_fix_mar_cycm$calvingYear) - n_yr_back
 tbl_sol_fix_mar_cycm <- tbl_sol_fix_mar_cycm %>%
   filter(calvingYear > n_min_year)
 #head(tbl_sol_fix_mar_cycm)
+tbl_sol_fix_hsa150_cycm <- tbl_sol_fix_hsa150_cycm %>%
+  filter(calvingYear > n_min_year)
+tbl_sol_fix_ms150_cycm <- tbl_sol_fix_ms150_cycm %>%
+  filter(calvingYear > n_min_year)
 
 #' ## Calving Year Times Month as Date
 #' Calving year and calving month which are in separate columns are combined into a 
@@ -175,6 +188,16 @@ tbl_sol_fix_mar_cycm <- tbl_sol_fix_mar_cycm %>%
                                                paste(calvingYear, paste0("0",calvingMonth), sep = '-'),
                                                paste(calvingYear, calvingMonth, sep = '-')),
                                       "01", sep = "-")))
+tbl_sol_fix_hsa150_cycm <- tbl_sol_fix_hsa150_cycm %>%
+  mutate(`Calving Year x Month` = as.Date(paste(ifelse(nchar(calvingMonth) == 1,
+                                                       paste(calvingYear, paste0("0",calvingMonth), sep = '-'),
+                                                       paste(calvingYear, calvingMonth, sep = '-')),
+                                                "01", sep = "-")))
+tbl_sol_fix_ms150_cycm <- tbl_sol_fix_ms150_cycm %>%
+  mutate(`Calving Year x Month` = as.Date(paste(ifelse(nchar(calvingMonth) == 1,
+                                                       paste(calvingYear, paste0("0",calvingMonth), sep = '-'),
+                                                       paste(calvingYear, calvingMonth, sep = '-')),
+                                                "01", sep = "-")))
 #head(tbl_sol_fix_mar_cycm,15)
 
 #' ## Levels in Chronological Order
@@ -183,6 +206,10 @@ tbl_sol_fix_mar_cycm <- tbl_sol_fix_mar_cycm %>%
 tbl_sol_fix_mar_cycm <- tbl_sol_fix_mar_cycm %>%
   arrange(desc(Level))
 #head(tbl_sol_fix_mar_cycm)
+tbl_sol_fix_hsa150_cycm <- tbl_sol_fix_hsa150_cycm %>%
+  arrange(desc(Level))
+tbl_sol_fix_ms150_cycm <- tbl_sol_fix_ms150_cycm %>%
+  arrange(desc(Level))
 
 #' The levels of the cycm effects should be unique.
 #+ check-levels-unique
@@ -190,25 +217,64 @@ tbl_sol_fix_mar_cycm %>%
   group_by(`Calving Year x Month`) %>%
   summarise(cnt = n()) %>%
   filter(cnt > 1)
+tbl_sol_fix_hsa150_cycm %>%
+  group_by(`Calving Year x Month`) %>%
+  summarise(cnt = n()) %>%
+  filter(cnt > 1)
+tbl_sol_fix_ms150_cycm %>%
+  group_by(`Calving Year x Month`) %>%
+  summarise(cnt = n()) %>%
+  filter(cnt > 1)
 
 #' The first six records of the prepared data-set are shown below.
 #+ head-data
 head(tbl_sol_fix_mar_cycm)
+head(tbl_sol_fix_hsa150_cycm)
+head(tbl_sol_fix_ms150_cycm)
 
 
 #' # Plots
 #' The plots show the solutions for the different levels of fixed effect. Because the 
 #' effect-levels are time-dependent, the x-axis is shown as a time scale.
 # plots using date on x-axis
-p_cycm <- ggplot(data = tbl_sol_fix_mar_cycm, aes(x = `Calving Year x Month`, y=Solution)) + 
+p_cycm_mar <- ggplot(data = tbl_sol_fix_mar_cycm, aes(x = `Calving Year x Month`, y=Solution)) + 
   geom_point() + 
   geom_line(color = "red") + 
   scale_x_date(name = "Calving Year X Month",
                date_breaks = "1 year", 
                date_labels = "%Y"
-               )
-p_cycm
+               ) + 
+  ggtitle(label = "Merkmal: mar")
+p_cycm_mar
+ggsave(filename = 'solfix_cycm_mar.pdf', plot = p_cycm_mar)
+ggsave(filename = 'solfix_cycm_mar.png', plot = p_cycm_mar)
+ggsave(filename = 'solfix_cycm_mar.svg', plot = p_cycm_mar)
 
+p_cycm_hsa150 <- ggplot(data = tbl_sol_fix_hsa150_cycm, aes(x = `Calving Year x Month`, y=Solution)) + 
+  geom_point() + 
+  geom_line(color = "red") + 
+  scale_x_date(name = "Calving Year X Month",
+               date_breaks = "1 year", 
+               date_labels = "%Y"
+  ) + 
+  ggtitle(label = "Merkmal: hsa150")
+p_cycm_hsa150
+ggsave(filename = 'solfix_cycm_hsa150.pdf', plot = p_cycm_hsa150)
+ggsave(filename = 'solfix_cycm_hsa150.png', plot = p_cycm_hsa150)
+ggsave(filename = 'solfix_cycm_hsa150.svg', plot = p_cycm_hsa150)
+
+p_cycm_ms150 <- ggplot(data = tbl_sol_fix_ms150_cycm, aes(x = `Calving Year x Month`, y=Solution)) + 
+  geom_point() + 
+  geom_line(color = "red") + 
+  scale_x_date(name = "Calving Year X Month",
+               date_breaks = "1 year", 
+               date_labels = "%Y"
+  ) + 
+  ggtitle(label = "Merkmal: ms150")
+p_cycm_ms150
+ggsave(filename = 'solfix_cycm_ms150.pdf', plot = p_cycm_ms150)
+ggsave(filename = 'solfix_cycm_ms150.png', plot = p_cycm_ms150)
+ggsave(filename = 'solfix_cycm_ms150.svg', plot = p_cycm_ms150)
 
 #' ---
 #' # Old Experiments and Material Taken from ggplot2 (@Wickham2009)
